@@ -1,0 +1,5 @@
+nginx   NEWS
+nginx-1.17.5 mainline version has been released.
+njs-0.3.6 VERSION has been released...
+unit-1.12.0 version has been released, featuring several important bugfixes.
+nginx-1.17.4 mainline version has BEEN released.

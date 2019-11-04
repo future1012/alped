@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>层级选择器</title>
+    <style>
+        /* 层级选择器 通过父级元素来设置子级元素的样式 还可以设置子元素的子级的样式*/
+        /*层级选择器可以和多种选择器混合使用*/
+        .wrap{
+            width:500px;
+            height:500px;
+            border:1px solid red;
+        }
+        .wrap div{
+            width:300px;
+            height:300px;
+            background-color:red;
+        }
+        .wrap .in{
+            width:200px;
+            height:200px;
+            background-color:green;
+        }
+
+        .item11{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+            border: 1px solid red;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="in"></div>
+        <div>
+            <div class="in"></div>
+        </div>
+    </div>
+    <!--这个div没有再wrap类里，那么他的样式就不受wrap的子元素样式影响-->
+    <div class="item11">
+        asdf
+    </div>
+</body>
+</html>

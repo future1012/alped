@@ -1,0 +1,81 @@
+num = re.compile(r'\d{1,3}(,\d{3})*$')
+num.search('1,234').group()
+Out[272]: '1,234'
+num.search('42').group()
+Out[273]: '42'
+num.search('6,368,745').group()
+Out[274]: '6,368,745'
+num.search('12,34,567').group()
+Out[275]: '34,567'
+num.search('1234').group()
+Out[276]: '234'
+##############################
+num = re.compile(r'^[A-Z]\w+\sNakamoto')
+
+num = re.compile(r'^[A-Z]\w+\sNakamoto')
+num.search(Satoshi Nakamoto)
+  File "<ipython-input-227-3b135c5f4cd3>", line 1
+    num.search(Satoshi Nakamoto)
+                              ^
+SyntaxError: invalid syntax
+num.search('Satoshi Nakamoto')
+Out[228]: <re.Match object; span=(0, 16), match='Satoshi Nakamoto'>
+num.search('Satoshi Nakamoto').group()
+Out[229]: 'Satoshi Nakamoto'
+num.search('Alice Nakamoto').group()
+Out[230]: 'Alice Nakamoto'
+num.search('RoboCop Nakamoto').group()
+Out[231]: 'RoboCop Nakamoto'
+num.search('Mr. Nakamoto').group()
+Traceback (most recent call last):
+  File "C:\Users\sj\demo\lib\site-packages\IPython\core\interactiveshell.py", line 3326, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-232-cee7a227a27b>", line 1, in <module>
+    num.search('Mr. Nakamoto').group()
+AttributeError: 'NoneType' object has no attribute 'group'
+num.search(''Satoshi nakamoto').group()
+  File "<ipython-input-233-850a9a85c69d>", line 1
+    num.search(''Satoshi nakamoto').group()
+                       ^
+SyntaxError: invalid syntax
+num.search('Satoshi nakamoto').group()
+Traceback (most recent call last):
+  File "C:\Users\sj\demo\lib\site-packages\IPython\core\interactiveshell.py", line 3326, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-234-b087ed403589>", line 1, in <module>
+    num.search('Satoshi nakamoto').group()
+AttributeError: 'NoneType' object has no attribute 'group'
+######################################################
+num = re.compile(r'(alice|bob|carol)\s(eats|pets|throws)\s(apples|cats|baseballs).$',re.I)
+
+
+num = re.compile(r'(alice|bob|carol)\s(eats|pets|throws)\s(apples|cats|baseballs).$',re.I)
+num.search('Alice eats apples.').group()
+Out[259]: 'Alice eats apples.'
+num.search('Bob pets cats.').group()
+Out[260]: 'Bob pets cats.'
+num.search('Carol throws baseballs.').group()
+Out[261]: 'Carol throws baseballs.'
+num.search('BOB EATS CATS.').group()
+Out[262]: 'BOB EATS CATS.'
+num.search('RoboCop eats apples.').group()
+Traceback (most recent call last):
+  File "C:\Users\sj\demo\lib\site-packages\IPython\core\interactiveshell.py", line 3326, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-263-878ea7dffb3e>", line 1, in <module>
+    num.search('RoboCop eats apples.').group()
+AttributeError: 'NoneType' object has no attribute 'group'
+num.search('ALICE THROWS FOOTBALLS.').group()
+Traceback (most recent call last):
+  File "C:\Users\sj\demo\lib\site-packages\IPython\core\interactiveshell.py", line 3326, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-264-3e7907111297>", line 1, in <module>
+    num.search('ALICE THROWS FOOTBALLS.').group()
+AttributeError: 'NoneType' object has no attribute 'group'
+num.search('Carol eats 7 cats.').group()
+Traceback (most recent call last):
+  File "C:\Users\sj\demo\lib\site-packages\IPython\core\interactiveshell.py", line 3326, in run_code
+    exec(code_obj, self.user_global_ns, self.user_ns)
+  File "<ipython-input-265-99bc0e4f03d4>", line 1, in <module>
+    num.search('Carol eats 7 cats.').group()
+AttributeError: 'NoneType' object has no attribute 'group'
