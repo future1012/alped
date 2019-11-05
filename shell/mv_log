@@ -1,0 +1,68 @@
+#!/bin/bash
+#author: tengyue
+#mail: tengyue1023@163.com
+
+# Shell Env
+SERVER_IP='10.1.188.20'
+SHELL_NAME="mv_log"
+SHELL_DIR="/application"
+SHELL_LOG="${SHELL_DIR}/${SHELL_NAME}.log"
+LOCK_FILE="/tmp/${SHELL_NAME}.lock"
+
+#Write Log 
+shell_log(){
+    LOG_INFO=$1
+    echo "$(date "+%Y-%m-%d") $(date "+%H-%M-%S") : ${SHELL_NAME} : ${LOG_INFO}" >> ${SHELL_LOG}
+}
+
+# Shell Usage
+shell_usage(){
+    echo $"Usage: $0 start"
+}
+
+shell_lock(){
+    touch ${LOCK_FILE}
+}
+
+shell_unlock(){
+    rm -f ${LOCK_FILE}
+}
+
+sdir='/tomcat/logs-api'
+ddir='/data/tomcat-log-20'
+yesterday=$(date -d yesterday +"%Y-%m-%d")
+
+
+mv_log(){
+    if [ -f "$LOCK_FILE" ];then
+        shell_log "${SHELL_NAME} is running"
+        echo "${SHELL_NAME}" is running && exit
+    fi
+    shell_log "mv log start"
+    shell_lock
+    if [ -d $sdir/$yesterday ];then
+        shell_log  'dir is exist'
+        mv $sdir/$yesterday $ddir/ && shell_log 'mv log success'
+    else
+        shell_log 'dir is not exist'
+    fi
+    shell_log "mv log stop"
+    mv /application/tomcat8083/logs/catalina.out $ddir/catalina.out-$SERVER_IP-$(date +"%Y-%m-%d") && \
+    touch /application/tomcat8083/logs/catalina.out  && \
+    shell_log 'mv 8083 catalina.out success'
+    shell_unlock
+}
+
+# Main Function
+main(){
+    case $1 in
+        start )
+            mv_log
+            ;;
+        *)
+            shell_usage;
+    esac
+}
+
+#Exec
+main $1
