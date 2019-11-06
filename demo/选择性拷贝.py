@@ -13,7 +13,7 @@ def copyfile2dir(srcdir, suffix, distdir):
         os.mkdir(distdir)
     for foldername,subfolername, filenames in os.walk(srcdir):
         for filename in filenames:
-            filesuff = filename.split('.')[1]
+            filesuff = filename.split('.')[-1]
             if filesuff in suffix:
                 fileabspath = os.path.join(foldername,filename)
                 shutil.copy(fileabspath, distdir)
