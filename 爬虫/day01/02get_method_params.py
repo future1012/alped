@@ -5,7 +5,7 @@ import  string
 def get_method_parames():
     url = 'http://www.baidu.com/s?wd='
     #https://www.baidu.com/s?wd=%E7%BE%8E%E5%A5%B3
-    name = 'women'
+    name = 'women+men'
     final_url = url+name
     encode_new_url = urllib.parse.quote(final_url, safe=string.printable)
     print(encode_new_url)
