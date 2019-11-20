@@ -1,4 +1,5 @@
 from PIL import Image
+import os
 #获取自称字符画的所有字符
 def pictexts(pic, asciis, zoom, vscale):
     img = Image.open(pic)
@@ -23,6 +24,8 @@ def pictexts(pic, asciis, zoom, vscale):
 
 
 def main():
+    os.chdir(r'C:\Users\tengy\PycharmProjects\alped\fishc')
+    print(f'当前工作目录是：{os.getcwd()}')
     pic = input('plz input a pic name: ')
     #asciis字符串值必须按照这几个特殊字符的灰度程度又重到轻顺序排列
     asciis = "@%#*+=-:. "
