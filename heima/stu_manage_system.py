@@ -44,12 +44,12 @@ def del_info():
     for i in info:
         if del_user == i['name']:
             info.remove(i)
-        print(info)
+        #print(info)
+        print('删除成功！')
         break
     else:
         #print(info)
-        print('删除成功！')
-    print('用户不存在!')
+        print('用户不存在!')
 
 def que_info():
     que_user = input('请输入要查询的用户名: ')
