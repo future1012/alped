@@ -16,10 +16,10 @@ info = []
 def add_info():
     global info
     # 等待用户输入
-    new_id = input('ID: ')
-    new_name = input('名称：')
-    new_age = input('年龄：')
-    new_tel = input('电话：')
+    new_id = input('ID: ').strip()
+    new_name = input('名称：').strip()
+    new_age = input('年龄：').strip()
+    new_tel = input('电话：').strip()
     user_dict = {}
     # 判断用户是否存在
     # 存在，提示用户已存在，推出add_info
@@ -40,7 +40,7 @@ def add_info():
 def del_info():
     global info
     # 等待用户输入
-    del_user = input('请输入要删除的用户名称：')
+    del_user = input('请输入要删除的用户名称：').strip()
     for i in info:
         if del_user == i['name']:
             info.remove(i)
@@ -52,7 +52,7 @@ def del_info():
         print('用户不存在!')
 
 def que_info():
-    que_user = input('请输入要查询的用户名: ')
+    que_user = input('请输入要查询的用户名: ').strip()
     for i in info:
         if que_user == i['name']:
             print(f"ID: {i['id']}, 姓名：{i['name']}, 年龄：{i['age']}, 电话：{i['tel']}")
@@ -62,16 +62,16 @@ def que_info():
 
 def mod_info():
     global info
-    mod_user = input('请输入要修改的用户名: ')
+    mod_user = input('请输入要修改的用户名: ').strip()
     for i in info:
         if mod_user == i['name']:
-            mod_cont = int(input('''请输入需要修改内容的序号: (1.名称, 2.年龄, 3.电话) '''))
+            mod_cont = int(input('''请输入需要修改内容的序号: (1.名称, 2.年龄, 3.电话) ''').strip())
             if mod_cont == 1:
-                i['name'] = input('请输入新的名称：')
+                i['name'] = input('请输入新的名称：').strip()
             elif mod_cont == 2:
-                i['age'] = input('请输入新的年龄：')
+                i['age'] = input('请输入新的年龄：').strip()
             elif mod_cont == 3:
-                i['tel'] = input('请输入新的电话：')
+                i['tel'] = input('请输入新的电话：').strip()
             print('修改成功：')
             print(f"ID: {i['id']}, 姓名：{i['name']}, 年龄：{i['age']}, 电话：{i['tel']}")
             break
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     while True:
         #执行相应操作
         info_print()
-        userInputnum = int(input('请选择：'))
+        userInputnum = int(input('请选择：').strip())
         if userInputnum == 1:
             print('添加用户>>>')
             add_info()
