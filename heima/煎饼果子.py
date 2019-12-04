@@ -5,15 +5,17 @@ class Master(object):
     def make_cake(self):
         print(f'使用{self.kongfu}制作煎饼果子')
 
-class School(object):
+class School(Master):
     def __init__(self):
         self.kongfu = '[黑马煎饼果子配方]'
 
     def make_cake(self):
         print(f'使用{self.kongfu}制作煎饼果子')
+        super().__init__()
+        super().make_cake()
 
 
-class Prentice(Master,School):
+class Prentice(School):
     def __init__(self):
         #super().__init__()
         self.kongfu = '[独创煎饼果子配方]'
@@ -30,6 +32,9 @@ class Prentice(Master,School):
         School.__init__(self)
         School.make_cake(self)
 
+    def make_old_cake(self):
+        super().__init__()
+        super().make_cake()
 
 
 
@@ -37,6 +42,6 @@ daqiu = Prentice()
 
 
 daqiu.make_cake()
-daqiu.make_master_cake()
-daqiu.make_school_cake()
-daqiu.make_cake()
+# daqiu.make_master_cake()
+# daqiu.make_school_cake()
+daqiu.make_old_cake()
