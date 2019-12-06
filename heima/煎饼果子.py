@@ -1,29 +1,47 @@
-class Dog(object):
-    def work(self):
-        print('指哪儿打哪儿')
+class Master(object):
+    def __init__(self):
+        self.kongfu = '[古法煎饼果子配方]'
 
-class ArmyDog(Dog):
-    def work(self):
-        print('追击敌人')
+    def make_cake(self):
+        print(f'使用{self.kongfu}制作煎饼果子')
 
-class DrugDog(Dog):
-    def work(self):
-        print('检测毒品')
+class School(Master):
+    def __init__(self):
+        self.kongfu = '[黑马煎饼果子配方]'
 
-class Persion(object):
-    def work_with_dog(self,dog):
-        return dog.work()
-
-class Sdog(Dog):
-    def superTest(self):
-        super().work()
-
-daqiu = Persion()
-A = ArmyDog()
-B = DrugDog()
-daqiu.work_with_dog(A)
-daqiu.work_with_dog(B)
+    def make_cake(self):
+        print(f'使用{self.kongfu}制作煎饼果子')
+        super().__init__()
+        super().make_cake()
 
 
-s = Sdog()
-s.superTest()
+class Prentice(School):
+    def __init__(self):
+        #super().__init__()
+        self.kongfu = '[独创煎饼果子配方]'
+
+    def make_cake(self):
+        self.__init__()
+        print(f'使用{self.kongfu}制作煎饼果子')
+
+    def make_master_cake(self):
+        Master.__init__(self)
+        Master.make_cake(self)
+
+    def make_school_cake(self):
+        School.__init__(self)
+        School.make_cake(self)
+
+    def make_old_cake(self):
+        super().__init__()
+        super().make_cake()
+
+
+
+daqiu = Prentice()
+
+
+daqiu.make_cake()
+# daqiu.make_master_cake()
+# daqiu.make_school_cake()
+daqiu.make_old_cake()
